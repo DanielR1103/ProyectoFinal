@@ -1,0 +1,177 @@
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title> Tutorial de Ubuntu</title>
+    
+<body style="background-color: #F9E79F">
+    
+    
+<h1>SISTEMA OPERATIVO UBUNTU EN MAQUINA VIRTUAL</h1>
+
+  <h2>Actualización de paquetes.</h2>
+
+    <p>Una vez iniciada la maquina virtual:</p>
+
+    <p>1. Escribir el comando "sudo apt update" y dar enter. Apareceran los paquetes que estan actualizados o los que faltan por actualizarse. </p>
+
+    <p>NOTA: Cuando en un comando se utilize la palabra "sudo", en ocasiones pedira la contraseña para continuar. Lo que se tiene que hacer es poner la contraseña y dar enter. </p>
+
+    <p>2. Escribir el comando "sudo apt upgrade" y dar enter, para actualizar los paquetes. </p>
+
+
+    <p>3. Escribir el comando "S" y dar enter para aceptar que se actualicen los paquetes y esperar que se termine el proceso de actualización.</p>
+
+ <h2>Intalación de paquetes.</h2>
+
+    <p>1. Escribir el comando "apt search apache" y dar enter. Apareceran los posibles paquetes de apache que se pueden instalar.</p>
+
+    <p>2. Escribir el comando "sudo apt install apache2" y dar enter para instalar el paquete de apache.</p>
+
+    <p>3. Escribir el comando "S" y dar enter para aceptar la instalacion del paquete de apache. Esperar que termine el proceso.</p>
+
+    <p>4. Escribir el comando "apt search mysql" y dar enter. Apareceran los posibles paquetes de mysql que se pueden instalar.</p>
+
+    <p>5. Escribir el comando "sudo apt install mysql-server" y dar enter pra instalar el paquete de mysql.</p>
+
+    <p>6. Escribir el comando "S" y dar enter para aceptar la instalacion del paquete de mysql. Esperar que termine el proceso.</p>
+
+    <p>7. Escribir el comando "apt search php" y dar enter. Apareceran los posibles paquetes de php que se pueden instalar.</p> 
+
+    <p>8. Escribir el comando "sudo apt install php" y dar enter pra instalar el paquete de php.</p>
+
+    <p>9. Escribir el comando "S" y dar enter para aceptar la instalacion del paquete de php. Esperar que termine el proceso</p>
+
+ <h2>Iniciar los servicios</h2> 
+
+    <p>1. Escribir el comando "sudo service start apache2" y dar enter. El servicio estará iniciado.</p>
+
+    <p>2. Escribir el comando "sudo service start mysql" y dar enter. El servicio estará iniciado.</p>
+
+    <p>3. Escribir el comando "sudo service start php" y dar enter. El servicio estará iniciado.</p>
+
+ <h2>Probar que los servicios esten iniciados</h2>
+
+    <p>1. Escribir el comando "service --status-all" y dar enter. Aparecerá la lista de los servicios que estan iniciados.</p>
+
+    <p>2. Escribir el comando "ifconfig" y dar enter. Apareceran las tarjetas de redes.</p> 
+
+    <p>3. En la red enp0s8 aparecera una dirección ip. Abrir el navegador de preferencia, escribir la ip, dar enter y debe aparecer lo siguiente.</p>
+    
+    
+<h1>APLICACIÓN BIBLIOTECA</h1>
+
+ <h2>Clonar el repositorio de Github</h2>
+
+    <p>1. Escribir el comando "cd /var/www/html" y dar enter para cambiar de carpeta. </p>
+
+    <p>2. Escribir el comando "sudo git clone https://github.com/dgeti-cetis108/Programacion-M4S2-2018.git" y dar enter para clonar el repositorio.</p> 
+
+    <p>3. Escribir el comando "ls" y dar enter para ver la carpeta del repositorio clonado.</p> 
+
+    <p>4. Escribir el comando "sudo mv Programacion-M4S2-2018/ library.com" y dar enter para cambiar el nombre de la carpeta.</p>
+
+    <p>5. Escribir el comando "ls" y dar enter para ver la carpeta del repositorio nuevamente, pero con el nombre de library.com</p>
+
+  <h2>Conectar la base de datos y ejecutar el codigo.</h2>
+
+    <p>6. Escribir el comando "cd library.com/db" y dar enter para cambiar de carpeta.</p>
+
+    <p>7. Escribir el comando "ls" y dar enter. Deber aparecer un archivo "sql".</p> 
+
+    <p>8. Escribir el comando "sudo nano library.sql" y dar enter para editar el archivo.</p> 
+
+    <p>9. Abajo de donde se crea la base de datos, agregar el siguiente codigo: USE `library`;</p>
+
+    <p>10. Presionar las teclas Ctrl+O y dar enter para guardar los cambios realizados. </p>
+
+    <p>11. Presionar las teclas Ctrl+X para salir.</p>
+
+    <p>12. Escribir el comando "cat library.sql" y dar enter para confirmar la salida del editor nano.</p>
+
+    <p>13. Escribir el comando "sudo -i" y dar enter para cambiar al usuario root.</p>
+
+    <p>14. Escribir "mysql" y dar enter para entrar a mysql.</p>
+
+    <p>15. Escribir el comando "source /var/www/html/library.com/db/library.sql" y dar enter para crear la base de datos.</p>
+
+    <p>16. Escribir el comando "show databases" y dar enter para ver las base de datos creada.</p>
+
+    <p>17. Escribir el comando "select user,host from mysql.user" y dar enter para ver los usuarios.</p>
+
+  <h2>Crear un usuario y contraseña</h2>
+
+    <p>18. Escribir el comando "create user 'NombreDelUsuario'@'localhost' identified by 'LaContraseñaDelUsuario';" y dar enter para crear el usuario y contraseña. </p>
+
+    <p>19. Escribir el comando "grant all on library.* to 'NombreDelUsuario'@'localhost';" y dar enter para que se le otorguen al usuario los permisos de root.</p>
+
+    <p>20. Escribir "exit" y dar enter para salir de mysql.</p>
+
+    <p>21. Escribir "exit" y dar enter para salir de root.</p>
+
+    <p>22. Escribir el comando "mysql -u NombreDelUsuario -p" dar enter, escribir la contraseña y dar enter para comprobar la conexión. </p>
+
+    <p>23. Escribir "exit" y dar  enter para salir de mysql.</p>
+
+    <p>24. Escribir el comando "sudo nano /var/www/html/library.com/classes/conexion.php" y dar enter para entrar al editor del archivo. </p>
+
+    <p>25. En donde dice "username", escribir el nombre del usuario que se creó anteriormente y en donde dice "password", escribir la contraseña del usuario creado. </p>
+
+    <p>26. Presionar las teclas Ctrl+O y dar enter para guardar los cambios.</p>
+
+    <p>27. Presionar las teclas Ctrl+X para salir del editor. </p>
+
+    <p>28. Escribir el comando "sudo apt install php-mysql" y dar enter para instalar el paquete. </p>
+
+    <p>29. Escribir "S" y dar enter para aceptar la instalación.</p>
+
+    <p>30. Escribir el comando "sudo service apache2 restart" y dar enter para reiniciar el servicio.</p>
+    
+<h2>Edición del VirtualHost</h2>
+    <p>1. Escribir el comando "cd /etc/apache2/sites-available" y dar enter para cambiar de carpeta.</p>
+    
+    <p>2. Escribir el comando "sudo nano library.com.conf" para entrar y editar el archivo. </p>
+    
+    <p>3. Agregar el siguinete codigo:</p>
+    
+    <p>
+         &lt;VirualHost *.80&gt;
+    <br>   &ensp; ServerName library.com 
+    <br>   &ensp; ServerAlias www.library.com
+    <br>   &ensp; ServerAdmin danielrendon1101@gmail.com
+    <br>   &ensp; DocumentRoot /var/www/html/library.com
+    <br>   &ensp; ErrorLog /var/log/library.com-error.log
+    <br>   &ensp; CustomLog /var/log/library.com-access.log Common
+    <br>  &lt;/VirualHost&gt;
+    </p>
+    
+    <p>4. Presionar las teclas Ctrl+O y dar enter para guardar los cambios.</p>
+    
+    <p>5. Presionar las teclas Ctrl+X para salir del editor nano.</p>
+    
+    <p>6. Escribir el comando "sudo a2ensite library.com" y dar enter para habilitar el dominio</p>
+    
+    <p>7. Aparecera un mensaje y abajo un comando el cual se debe ejecurar, escribir el comando "systemctl reload apache2" y dar enter para habilitar el dominio. Debe de aparecer lo siguiente "Site library.com already enabled"</p>
+    
+    <p>8. Si no aparece el mensaje de que el dominio esta habilitado. Nuevamente se deberá escribir el comando "sudo a2ensite library.com" y dar enter para hablitarlo.</p>
+    
+    <p>9. Escribir el comando "sudo service apache2 restart" y dar enter para reiniciar el servicio de apachee.</p>
+    
+    <p>10. Escribir el comando "sudo nano /etc/host" y dar enter y agregar lo siguiente:
+    <br>&ensp; 127.0.0.1 library.com
+    <br>&ensp; 127.0.0.1 www.library.com</p>
+    
+    <p>11. Presionar las teclas Ctrl+O y dar enter para guardar los cambios. Luego presionar Ctrl+X para salir.</p>
+    
+    <p>12. Abrir el Bloc de notas como administrador. Seleccionar el Bloc de notas dar clic derecho y dar clic en "Ejecutar como administrador"</p>
+    
+    <p>13. Abrir el archico host que está ubicado en la siguiente ruta: C:\Windows\System32\drivers\etc</p>
+    
+    <p>14. Una ves dentro del archivo, agregar lo siguiente: la ip de la red enp0s8 acompañada del dominio. 
+       <br>  &ensp; 192.168.56.101 library.com
+       <br>  &ensp; 192.168.56.101 www.library.com</p>
+    
+    <p>15. Abrir el navegador, y buscar "library.com", deberá aparecer la aplicación biblioteca.</p>
+    
+        </body>
+    </head>
+</html>
